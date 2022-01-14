@@ -53,7 +53,7 @@ class SentimentAnalysis:
         neutral = 0
 
 
-        # iterating through tweets fetched
+        # iterating through tweets fetched.
         for tweet in self.tweets:
             #Append to temp so that we can store in csv later. I use encode UTF-8
             self.tweetText.append(self.cleanTweet(tweet.text).encode('utf-8'))
@@ -78,11 +78,11 @@ class SentimentAnalysis:
                 snegative += 1
 
 
-        # Write to csv and close csv file
+        # Write to csv and close csv file.
         csvWriter.writerow(self.tweetText)
         csvFile.close()
 
-        # finding average of how people are reacting
+        # finding average of how people are reacting.
         positive = self.percentage(positive, NoOfTerms)
         wpositive = self.percentage(wpositive, NoOfTerms)
         spositive = self.percentage(spositive, NoOfTerms)
@@ -91,7 +91,7 @@ class SentimentAnalysis:
         snegative = self.percentage(snegative, NoOfTerms)
         neutral = self.percentage(neutral, NoOfTerms)
 
-        # finding average reactionrajput
+        # finding average reactionrajput.
         polarity = polarity / NoOfTerms
 
         # printing out data
@@ -131,7 +131,7 @@ class SentimentAnalysis:
         # Remove Links, Special Characters etc from tweet
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w +:\ / \ / \S +)", " ", tweet).split())
 
-    # function to calculate percentage
+    # function to calculate percentage.
     def percentage(self, part, whole):
         temp = 100 * float(part) / float(whole)
         return format(temp, '.2f')
